@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rudr Adventure</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+}
+
+.hero{
+    position:relative;
+    height:100vh;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    padding-top:70px;
+}
+.hero-video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:0;
+}
+.hero::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+    z-index:-1;
+}
+
+.hero h1{
+    font-size:4rem;
+    font-weight:bold;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    font-weight:bold;
+}
+
+.activity-card img{
+    height:250px;
+    object-fit:cover;
+}
+
+.package-card{
+    transition:.3s;
+}
+
+.package-card:hover{
+    transform:translateY(-10px);
+}
+
+.gallery img{
+    height:250px;
+    object-fit:cover;
+    width:100%;
+}
+
+.booking{
+    background:#f8f9fa;
+}
+
+.footer{
+    background:#111;
+    color:white;
+    padding:30px 0;
+}
+
+.whatsapp-btn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    text-decoration:none;
+    z-index:999;
+}
+.navbar{
+    background: rgba(0,0,0,0.8);
+    transition: 0.3s;
+}
+.navbar.scrolled{
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(10px);
+}
+.text-danger{
+  font-size: 12px;
+  margin-top: 5px;
+}
+@media(max-width:768px){
+  .hero h1{
+    font-size:2.2rem;
+  }
+
+  .activity-card{
+    margin-bottom:20px;
+  }
+}
+.social-bar{
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+}
+
+.social-item{
+    display:flex;
+    justify-content:flex-end;
+    margin:5px 0;
+}
+
+.social-item a{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+}
+
+.social-text{
+    width:0;
+    overflow:hidden;
+    white-space:nowrap;
+    transition:.4s;
+    padding:0;
+    height:55px;
+    line-height:55px;
+}
+
+.social-item:hover .social-text{
+    width:220px;
+    padding:0 15px;
+}
+
+.social-icon{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    border-radius:12px 0 0 12px;
+}
+
+.phone-btn{
+    background:#28a745;
+}
+
+.email-btn{
+    background:#dc3545;
+}
+
+.insta-btn{
+background:linear-gradient(
+45deg,
+#f09433,
+#e6683c,
+#dc2743,
+#cc2366,
+#bc1888
+);
+}
+
+.hero-video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:0;
+}
+.hero-logo{
+    position:absolute;
+    top:80px;
+    left:50%;
+    transform:translateX(-50%);
+    width:220px;
+    z-index:3;
+}
+@media(max-width:768px){
+  .hero{
+    height:100vh;
+    min-height:100vh;
+    padding-top:70px;
+  }
+
+  .hero-logo{
+    width:140px;
+    top:40px;
+  }
+}
+.hero-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.35);
+    z-index:1;
+}
+
+.hero-logo{
+    z-index:2;
+}
+
+.hero .container{
+    position:relative;
+    z-index:2;
+}
+html, body{
+    overflow-x: hidden;
+}
+@media (max-width:768px){
+
+  .hero-video{
+    object-fit:cover;
+    height:100%;
+    width:100%;
+  }
+
+  .hero-logo{
+    width:140px;
+    top:50px;
+  }
+
+  .hero h1{
+    font-size:2rem;
+  }
+}
+.footer{
+    background:#000;
+    color:#fff;
+    padding:70px 0 20px;
+}
+
+.footer h3{
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.footer-line{
+    width:70px;
+    height:4px;
+    background:#ff3b3b;
+    margin-bottom:25px;
+}
+
+.footer p{
+    color:#bdbdbd;
+    margin-bottom:15px;
+}
+
+.footer a{
+    color:#bdbdbd;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footer a:hover{
+    color:#fff;
+    padding-left:5px;
+}
+
+.footer hr{
+    border-color:#333;
+    margin-top:20px;
+}
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.footer-bottom p{
+    margin:0;
+}
+
+@media(max-width:768px){
+
+.footer-bottom{
+    text-align:center;
+    gap:15px;
+}
+
+}
+.carousel-item{
+    padding:20px;
+}
+
+.carousel-item .card{
+    max-width:700px;
+    margin:auto;
+    border-radius:20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+    width:8%;
+}
+.gallery-photo{
+width:350px;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+transition:.3s;
+flex-shrink:0;
+cursor:pointer;
+}
+
+.gallery-photo:hover{
+transform:scale(1.08);
+}
+.hiking-card{
+    position:relative;
+    width:350px;
+    height:220px;
+    flex-shrink:0;
+    overflow:hidden;
+    border-radius:12px;
+}
+
+.hiking-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.hiking-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    opacity:0;
+    transition:.4s;
+}
+
+.hiking-card:hover img{
+    filter:blur(2px);
+    transform:scale(1.1);
+}
+
+.hiking-card:hover .hiking-overlay{
+    opacity:1;
+}
+.overflow-auto::-webkit-scrollbar{
+display:none;
+}
+.footer .row{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.footer .col-md-6,
+.footer .col-md-3{
+  flex: 1;
+}
+.footer-bottom{
+  display: block;
+  text-align: center;
+}
+.map-box{
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  border: 3px solid #fff;
+}
+
+.map-box iframe{
+  width: 100%;
+  height: 450px;
+  border: 0;
+}
+.hiking-overlay .btn{
+    margin-top:10px;
+}
+.activity-card .card-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.rafting-btn{
+    text-align:center;
+    width:100%;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.iti{
+    width:100%;
+}
+
+.iti input{
+    width:100%;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:transparent;">
+
+<div class="container">
+<a class="navbar-brand fw-bold" href="#">
+Rudr Adventure
+</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
+<li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+<li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+<video autoplay muted loop playsinline preload="auto" class="hero-video">
+  <source src="Rafting Drone Video 720P.mp4" type="video/mp4">
+</video>
+<div class="hero-overlay"></div>
+<img src="logo.png" class="hero-logo">
+<div class="container">
+<h1>Rudr Adventure</h1>
+<p class="lead">
+River Rafting • Hiking • Paragliding • Zip Line • Horse Riding • Zorbing
+</p>
+
+<a href="#booking" class="btn btn-warning btn-lg mt-3">
+Book Your Adventure
+</a>
+</div>
+</section>
+
+<!-- Activities -->
+<section id="activities" class="py-5">
+<div class="container">
+<h2 class="section-title">Adventure Activities</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="card activity-card">
+<img src="rafting-photos/rafting3.jpg" class="card-img-top">
+<div class="card-body">
+<h4>River Rafting</h4>
+<p>Experience thrilling white-water rafting with certified guides.</p>
+<a href="#booking" class="btn btn-primary mt-2">
+Book Now
+</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card activity-card">
+<img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800" class="card-img-top">
+<div class="card-body">
+<h4>Hiking & Trekking</h4>
+<p>Explore scenic mountain trails and nature routes.</p>
+<a href="#booking" class="btn btn-primary mt-2">
+Book Now
+</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card activity-card">
+<img src="peragliding-photos/peragliding4.jpg" class="card-img-top">
+<div class="card-body">
+<h4>Paragliding</h4>
+<p>Fly high and enjoy breathtaking aerial views.</p>
+<a href="#booking" class="btn btn-primary mt-2">
+Book Now
+</a>
+</div>
+</div>
+</div>
+
+<!-- Zip Line -->
+
+<div class="col-md-4">
+<div class="card activity-card">
+<img src="zipline-photos/zipline3.jpg" class="card-img-top">
+<div class="card-body">
+<h4>Zip Line</h4>
+<p>Enjoy an exciting zip line ride with stunning mountain views.</p>
+
+<a href="#booking" class="btn btn-primary mt-2">
+Book Now
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- Horse Riding -->
+
+<div class="col-md-4">
+<div class="card activity-card">
+<img src="horse-riding-photos/horse1.jpg" class="card-img-top">
+<div class="card-body">
+<h4>Horse Riding</h4>
+<p>Explore beautiful trails and valleys on horseback.</p>
+
+<a href="#booking" class="btn btn-primary mt-2">
+Book Now
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- Zorbing -->
+
+<div class="col-md-4">
+<div class="card activity-card">
+<img src="zorbing-photos/zorbing1.jpg" class="card-img-top">
+
+<div class="card-body">
+<h4>Zorbing</h4>
+
+<p>Roll down scenic slopes inside a giant transparent zorbing ball.</p>
+
+<a href="#booking" class="btn btn-primary mt-2">
+Book Now
+</a>
+
+</div>
+</div>
+</div>
+
+</div>   <!-- row g-4 close -->
+</div>   <!-- container close -->
+</section>
+
+<!-- Packages -->
+<section id="packages" class="bg-light py-5">
+<div class="container">
+
+<h2 class="section-title">Adventure Packages</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="card package-card text-center">
+<div class="card-body">
+<h3>Silver Package</h3>
+<p>Rafting + Peragliding</p>
+<h2>₹6,999</h2>
+<a href="#booking" class="btn btn-primary"
+onclick="setAmount('Silver Package',6999)">
+Book Now
+</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card package-card text-center border-warning">
+<div class="card-body">
+<h3>Gold Package</h3>
+<p>Rafting + Hiking</p>
+<h2>₹8,999</h2>
+<a href="#booking" class="btn btn-warning"
+onclick="setAmount('Gold Package',8999)">
+Book Now
+</a>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card package-card text-center">
+<div class="card-body">
+<h3>Platinum Package</h3>
+<p>Rafting + Hiking + Paragliding</p>
+<h2>₹11,999</h2>
+<a href="#booking" class="btn btn-success"
+onclick="setAmount('Platinum Package',11999)">
+Book Now
+</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Adventure Gallery -->
+
+<section id="gallery" class="py-5 bg-dark text-white">
+
+<div class="container-fluid px-4">
+
+<h2 class="mb-4">River Rafting</h2>
+
+<div class="d-flex overflow-auto gap-3 pb-3">
+
+<img src="./rafting-photos/rafting1.jpg" class="gallery-photo">
+<img src="./rafting-photos/rafting2.jpg" class="gallery-photo">
+<img src="./rafting-photos/rafting3.jpg" class="gallery-photo">
+<img src="./rafting-photos/rafting4.jpg" class="gallery-photo">
+<img src="./rafting-photos/rafting5.jpg" class="gallery-photo">
+<img src="./rafting-photos/rafting6.jpg" class="gallery-photo">
+<img src="./rafting-photos/rafting7.webp" class="gallery-photo">
+<img src="./rafting-photos/rafting8.jpg" class="gallery-photo">
+<img src="./rafting-photos/rafting9.jpg" class="gallery-photo">
+
+</div>
+
+</div>
+
+<div style="width:100%; text-align:center; margin:25px 0;">
+<a href="rafting-photos/river-rafting-details.html"
+class="btn btn-warning btn-lg">
+View Details
+</a>
+</div>
+
+<h2 class="mb-4 mt-5">Hiking & Trekking</h2>
+
+<div class="d-flex overflow-auto gap-3 pb-3">
+
+
+<div class="hiking-card">
+    <img src="hiking-photos/hiking1.jpg" class="gallery-photo">
+    <div class="hiking-overlay">
+        <h4>Chakund Lake Trek</h4>
+        <p>"Experience the untouched beauty of Chamba whith an unforgettable trek of the serence Chakund lake"</p>
+    <a href="hiking-details/chakund-lake.html" class="btn btn-warning btn-sm mt-2">
+    View Details
+</a>
+    </div>
+
+</div>
+<div class="hiking-card">
+    <img src="hiking-photos/hiking2.jpg" class="gallery-photo">
+    <div class="hiking-overlay">
+        <h4>Gadasru Mahadev Lake Trek</h4>
+        <p>"Trek of the mystrical Gadasru lake, a hidden high-altitude wonder nestled amidst the majestic peaks of the Chamba Himalayas"</p>
+    <a href="hiking-details/gadasru-lake.html" class="btn btn-warning btn-sm">
+    View Details
+</a>
+    </div>
+</div>
+
+<div class="hiking-card">
+    <img src="hiking-photos/hiking3.jpg" class="gallery-photo">
+    <div class="hiking-overlay">
+        <h4>Manimahesh Lake Trek</h4>
+        <p>"Embark on a soul-stirring journey to the sacred Manimahesh Lake, where ancient faith meets the majestic grandeur of the Himalayas"</p>
+   <a href="hiking-details/manimahesh-lake.html" class="btn btn-warning btn-sm">
+    View Details
+</a>
+    </div>
+</div>
+
+<div class="hiking-card">
+    <img src="hiking-photos/hiking4.jpg" class="gallery-photo">
+    <div class="hiking-overlay">
+        <h4>Kugti Pass Trek</h4>
+        <p>"Conquer the formidable Kugti Pass, a high-altitude expedition offering raw, rugged landscapes and the ultimate challenge for every mountain enthusiast"</p>
+   <a href="hiking-details/kugti-pass.html" class="btn btn-warning btn-sm">
+    View Details
+</a>
+    </div>
+</div>
+
+<div class="hiking-card">
+    <img src="hiking-photos/hiking5.jpg" class="gallery-photo">
+    <div class="hiking-overlay">
+        <h4>Khundi Maral Lake Trek</h4>
+        <p>"Uncover the secrets of the Himalayas with a journey of the remote and pristine  Khundi Maral Lake, a true paradise for offbeat explorers"</p>
+   <a href="hiking-details/khundi-maral.html" class="btn btn-warning btn-sm">
+    View Details
+</a>
+    </div>
+</div>
+<div class="hiking-card">
+    <img src="hiking-photos/hiking6.jpg" class="gallery-photo">
+    <div class="hiking-overlay">
+        <h4>Lam Dal Lake Trek</h4>
+        <p>"Trek of the magnificent Lam Dal Lake, an extraordinary high-altitude expedition tgat leads you through a mesmerizing chain of 7 sacred alpine lakes"</p>
+   <a href="hiking-details/lam-dal.html" class="btn btn-warning btn-sm">
+    View Details
+</a>
+    </div>
+</div>
+
+
+</div>  <!-- Hiking row close -->
+
+<h2 class="mb-4 mt-5">Paragliding</h2>
+
+<div class="d-flex overflow-auto gap-3 pb-3">
+
+<img src="peragliding-photos/peragliding1.jpg" class="gallery-photo">
+<img src="peragliding-photos/peragliding2.jpg" class="gallery-photo">
+<img src="peragliding-photos/peragliding3.jpg" class="gallery-photo">
+<img src="peragliding-photos/peragliding4.jpg" class="gallery-photo">
+<img src="peragliding-photos/peragliding5.jpg" class="gallery-photo">
+<img src="peragliding-photos/peragliding6.jpg" class="gallery-photo">
+<img src="peragliding-photos/peragliding7.jpg" class="gallery-photo">
+<img src="peragliding-photos/peragliding8.jpg" class="gallery-photo">
+<img src="peragliding-photos/peragliding9.jpg" class="gallery-photo">               
+
+</div>
+<div style="width:100%; text-align:center; margin:25px 0;">
+    <a href="peragliding-photos/peragliding-details.html"
+       class="btn btn-warning btn-lg">
+       View Details
+    </a>
+</div>
+
+<h2 class="mb-4 mt-5">Zip Line</h2>
+
+<div class="d-flex overflow-auto gap-3 pb-3">
+
+<img src="zipline-photos/zipline1.jpg" class="gallery-photo">
+<img src="zipline-photos/zipline2.jpg" class="gallery-photo">
+<img src="zipline-photos/zipline3.jpg" class="gallery-photo">
+<img src="zipline-photos/zipline4.jpg" class="gallery-photo">
+<img src="zipline-photos/zipline5.jpg" class="gallery-photo">
+<img src="zipline-photos/zipline6.jpg" class="gallery-photo">
+<img src="zipline-photos/zipline7.jpg" class="gallery-photo">
+<img src="zipline-photos/zipline8.jpg" class="gallery-photo">
+<img src="zipline-photos/zipline9.jpg" class="gallery-photo">
+
+
+</div>
+<div style="width:100%; text-align:center; margin:25px 0;">
+    <a href="zipline-photos/zipline-details.html"
+       class="btn btn-warning btn-lg">
+       View Details
+    </a>
+</div>
+<h2 class="mb-4 mt-5">Horse Riding</h2>
+
+<div class="d-flex overflow-auto gap-3 pb-3">
+
+<img src="horse-riding-photos/horse1.jpg" class="gallery-photo">
+<img src="horse-riding-photos/horse2.jpg" class="gallery-photo">
+<img src="horse-riding-photos/horse3.jpg" class="gallery-photo">
+<img src="horse-riding-photos/horse4.jpg" class="gallery-photo">
+<img src="horse-riding-photos/horse5.jpg" class="gallery-photo">
+<img src="horse-riding-photos/horse6.jpg" class="gallery-photo">
+
+</div>
+<div style="width:100%; text-align:center; margin:25px 0;">
+    <a href="horse-riding-photos/horse-riding-details.html"
+       class="btn btn-warning btn-lg">
+       View Details
+    </a>
+</div>
+<h2 class="mb-4 mt-5">Zorbing</h2>
+
+<div class="d-flex overflow-auto gap-3 pb-3">
+
+<img src="zorbing-photos/zorbing1.jpg" class="gallery-photo">
+<img src="zorbing-photos/zorbing2.jpg" class="gallery-photo">
+<img src="zorbing-photos/zorbing3.jpg" class="gallery-photo">
+<img src="zorbing-photos/zorbing4.jpg" class="gallery-photo">
+<img src="zorbing-photos/zorbing5.jpg" class="gallery-photo">
+<img src="zorbing-photos/zorbing6.jpg" class="gallery-photo">
+
+</div>
+<div style="width:100%; text-align:center; margin:25px 0;">
+    <a href="zorbing-photos/zorbing-details.html"
+       class="btn btn-warning btn-lg">
+       View Details
+    </a>
+</div>
+</section>
+<!-- Booking -->
+<section id="booking" class="booking py-5">
+<div class="container">
+
+<h2 class="section-title">Online Booking</h2>
+
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<form class="card p-4 shadow">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+<input type="text" class="form-control" id="name" placeholder="Full Name">
+<small class="text-danger d-none" id="nameError">Please enter your name</small>
+</div>
+
+<div class="col-md-6">
+
+<div class="input-group">
+
+<select class="form-select"
+        id="countryCode"
+        style="max-width:120px;">
+
+<option value="+91">🇮🇳 +91</option>
+<option value="+1">🇺🇸 +1</option>
+<option value="+44">🇬🇧 +44</option>
+<option value="+61">🇦🇺 +61</option>
+<option value="+971">🇦🇪 +971</option>
+<option value="+91">🇮🇳 India +91</option>
+<option value="+1">🇺🇸 United States +1</option>
+<option value="+44">🇬🇧 United Kingdom +44</option>
+<option value="+61">🇦🇺 Australia +61</option>
+<option value="+971">🇦🇪 UAE +971</option>
+<option value="+966">🇸🇦 Saudi Arabia +966</option>
+<option value="+974">🇶🇦 Qatar +974</option>
+<option value="+968">🇴🇲 Oman +968</option>
+<option value="+965">🇰🇼 Kuwait +965</option>
+<option value="+973">🇧🇭 Bahrain +973</option>
+<option value="+92">🇵🇰 Pakistan +92</option>
+<option value="+880">🇧🇩 Bangladesh +880</option>
+<option value="+94">🇱🇰 Sri Lanka +94</option>
+<option value="+977">🇳🇵 Nepal +977</option>
+<option value="+975">🇧🇹 Bhutan +975</option>
+<option value="+86">🇨🇳 China +86</option>
+<option value="+81">🇯🇵 Japan +81</option>
+<option value="+82">🇰🇷 South Korea +82</option>
+<option value="+49">🇩🇪 Germany +49</option>
+<option value="+33">🇫🇷 France +33</option>
+<option value="+39">🇮🇹 Italy +39</option>
+<option value="+7">🇷🇺 Russia +7</option>
+<option value="+55">🇧🇷 Brazil +55</option>
+<option value="+27">🇿🇦 South Africa +27</option>
+
+</select>
+
+<input type="tel"
+       class="form-control"
+       id="phone"
+       placeholder="Phone Number"
+       maxlength="15"
+       oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+
+</div>
+
+<small class="text-danger d-none" id="phoneError">
+Please enter phone number
+</small>
+
+</div>
+
+<div class="col-md-6">
+<input type="date" class="form-control" id="date">
+<small class="text-danger d-none" id="dateError">Please select date</small>
+</div>
+
+<div class="col-md-6">
+<input type="number"
+id="persons"
+class="form-control"
+placeholder="Number of Persons"
+min="1"
+>
+</div>
+
+<div class="col-md-6">
+<select class="form-select" id="activitySelect">
+<option>Select Activity</option>
+<option>River Rafting</option>
+<option>Hiking & Trekking</option>
+<option>Paragliding</option>
+<option>Zip Line</option>
+<option>Horse Riding</option>
+<option>Zorbing</option>
+<option>Package Booking</option>
+</select>
+</div>
+
+<div class="col-12">
+<textarea class="form-control" rows="4" placeholder="Message"></textarea>
+</div>
+
+<div class="col-12 text-center">
+<button type="button"
+class="btn btn-success btn-lg"
+onclick="sendBooking()">
+Submit Booking
+</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- Customer Reviews Slider -->
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<h2 class="section-title">Customer Reviews</h2>
+
+<div class="text-center mb-4">
+<h1 style="font-size:60px;color:#f39c12;">4.9 ★</h1>
+<h5>Based on 5000+ Happy Customers</h5>
+<p class="text-muted">
+Trusted by Adventure Lovers Across Himachal Pradesh
+</p>
+</div>
+
+<div id="reviewSlider" class="carousel slide" data-bs-ride="carousel">
+
+<div class="carousel-inner">
+
+<div class="carousel-item active">
+<div class="card shadow border-0 text-center p-4">
+<div style="font-size:24px;color:#f39c12;">★★★★★</div>
+<p class="mt-3">
+Amazing rafting experience. Safety arrangements were excellent and guides were very professional.
+</p>
+<h6 class="fw-bold">Rahul Sharma</h6>
+</div>
+</div>
+
+<div class="carousel-item">
+<div class="card shadow border-0 text-center p-4">
+<div style="font-size:24px;color:#f39c12;">★★★★★</div>
+<p class="mt-3">
+One of the best adventure experiences in Chamba. Highly recommended for families and friends.
+</p>
+<h6 class="fw-bold">Priya Verma</h6>
+</div>
+</div>
+
+<div class="carousel-item">
+<div class="card shadow border-0 text-center p-4">
+<div style="font-size:24px;color:#f39c12;">★★★★★</div>
+<p class="mt-3">
+Friendly staff, beautiful location and unforgettable memories. Will definitely visit again.
+</p>
+<h6 class="fw-bold">Aman Thakur</h6>
+</div>
+</div>
+
+</div>
+
+<button class="carousel-control-prev" type="button" data-bs-target="#reviewSlider" data-bs-slide="prev">
+<span class="carousel-control-prev-icon bg-dark rounded-circle"></span>
+</button>
+
+<button class="carousel-control-next" type="button" data-bs-target="#reviewSlider" data-bs-slide="next">
+<span class="carousel-control-next-icon bg-dark rounded-circle"></span>
+</button>
+
+</div>
+
+</div>
+
+</section>
+<!-- Google Map -->
+<section class="py-5">
+<div class="container">
+<h2 class="section-title">Find Us</h2>
+
+<div class="map-box">
+  <iframe
+    src="https://maps.google.com/maps?q=chamba&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    allowfullscreen="">
+  </iframe>
+</div>
+
+</div>
+</section>
+
+<!-- Professional Footer -->
+<footer id="contact" class="footer">
+<div class="container">
+
+<div class="row">
+
+<!-- Information -->
+<div class="col-md-6 mb-4">
+  <h3>Information</h3>
+  <div class="footer-line"></div>
+
+  <p><a href="about.html">About Us</a></p>
+   <p><a href="contact.html">Contact Us</a></p>
+  <p><a href="terms.html">Terms & Conditions</a></p>
+  <p><a href="privacy.html">Privacy Policy</a></p>
+</div>
+
+<!-- Safety -->
+<div class="col-md-3 mb-4">
+  <h3>Safety & Support</h3>
+  <div class="footer-line"></div>
+
+  <p><a href="safety.html">Safety Guidelines</a></p>
+  <p><a href="support.html">24x7 Customer Support</a></p>
+  <p><a href="secure.html">Secure Online Booking</a></p>
+</div>
+
+<!-- Contact -->
+<div class="col-md-3 mb-4">
+  <h3>Get In Touch</h3>
+  <div class="footer-line"></div>
+
+  <p><strong>Phone:</strong><br>+91 8091757971</p>
+  <p><strong>Email:</strong><br>rudradventure@gmail.com</p>
+  <p><strong>Address:</strong><br>Chamba, Himachal Pradesh, India</p>
+</div>
+
+</div>
+
+<hr>
+
+<div class="footer-bottom">
+
+<p>© 2026 Rudr Adventure. All Rights Reserved.</p>
+
+
+</div>
+
+</div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/+918091757971"
+class="whatsapp-btn"
+target="_blank">
+💬
+</a>
+<div class="social-bar">
+
+<div class="social-item">
+<a href="tel:+918091757971">
+
+<span class="social-text phone-btn">
++91 8091757971
+</span>
+
+<span class="social-icon phone-btn">
+<i class="fas fa-phone"></i>
+</span>
+
+</a>
+</div>
+
+<div class="social-item">
+<a href="mailto:rudradventure@gmail.com">
+
+<span class="social-text email-btn">
+rudradventure@gmail.com
+</span>
+
+<span class="social-icon email-btn">
+<i class="fas fa-envelope"></i>
+</span>
+
+</a>
+</div>
+
+<div class="social-item">
+<a href="https://www.instagram.com/rudr_adventure?igsh=MXE3cDQ2dWg2MzliaA=="
+target="_blank">
+
+<span class="social-text insta-btn">
+Follow Us
+</span>
+
+<span class="social-icon insta-btn">
+<i class="fab fa-instagram"></i>
+</span>
+
+</a>
+</div>
+
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
+<script>
+
+
+let selectedAmount = 0;
+let bookingMode = "activity";
+
+// package select hone par
+function setAmount(packageName, amount){
+    selectedAmount = amount;
+    bookingMode = "package";
+
+    document.getElementById("activitySelect").value = "Package Booking";
+}
+
+// agar user activity change kare
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("activitySelect").addEventListener("change", function () {
+        if (this.value !== "Package Booking") {
+            bookingMode = "activity";
+            selectedAmount = 0;
+        }
+    });
+});
+
+// FINAL BOOKING FUNCTION
+function sendBooking(){
+
+    let name = document.getElementById("name").value;
+  let countryCode = document.getElementById("countryCode").value;
+let phone = countryCode + document.getElementById("phone").value.replace(/[^0-9]/g,'');
+    let date = document.getElementById("date").value;
+    let persons = document.getElementById("persons").value;
+    let activity = document.getElementById("activitySelect").value;
+    let message = document.querySelector('#booking textarea').value;
+
+    let isValid = true;
+
+    document.getElementById("nameError").classList.add("d-none");
+    document.getElementById("phoneError").classList.add("d-none");
+    document.getElementById("dateError").classList.add("d-none");
+
+    if(!name){
+        document.getElementById("nameError").classList.remove("d-none");
+        isValid = false;
+    }
+
+    if(!phone){
+        document.getElementById("phoneError").classList.remove("d-none");
+        isValid = false;
+    }
+
+    if(!date){
+        document.getElementById("dateError").classList.remove("d-none");
+        isValid = false;
+    }
+
+    if(!isValid) return;
+
+    if(activity === "Select Activity"){
+        document.getElementById('activitySelect').focus();
+        return;
+    }
+
+    let text =
+        "New Booking%0A%0A" +
+        "Name: " + name + "%0A" +
+        "Phone: " + phone + "%0A" +
+        "Date: " + date + "%0A" +
+        "Persons: " + persons + "%0A" +
+        "Activity: " + activity + "%0A" +
+        "Message: " + message;
+
+    let url =
+"payment.html?" +
+"name=" + encodeURIComponent(name) +
+"&phone=" + encodeURIComponent(phone) +
+"&date=" + encodeURIComponent(date) +
+"&persons=" + encodeURIComponent(persons) +
+"&activity=" + encodeURIComponent(activity);
+
+if (bookingMode === "package" && selectedAmount > 0) {
+    url += "&amount=" + selectedAmount;
+} else {
+    url += "&amount=manual";
+}
+
+window.open(url, "_blank");
+}
+</script>
+</body>
+</html>
