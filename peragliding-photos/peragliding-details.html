@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paragliding Adventure | Rudr Adventure</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f8f9fa;
+}
+
+.hero{
+    height:60vh;
+    background:url('peragliding9.jpg') center center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:3rem;
+    font-weight:bold;
+}
+
+.info-section{
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    margin-top:-50px;
+    position:relative;
+    z-index:3;
+}
+
+.info-section p{
+    font-size:18px;
+    margin-bottom:15px;
+}
+
+.about-section{
+    background:#fff;
+    padding:40px;
+    border-radius:15px;
+    margin-top:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.about-section h2{
+    margin-bottom:20px;
+}
+
+.btn-custom{
+    padding:12px 30px;
+    font-size:18px;
+    border-radius:8px;
+}
+
+.footer{
+    background:#111;
+    color:#fff;
+    padding:25px;
+    text-align:center;
+    margin-top:50px;
+}
+
+@media(max-width:768px){
+
+.hero{
+    height:50vh;
+}
+
+.hero h1{
+    font-size:2rem;
+}
+
+.info-section,
+.about-section{
+    padding:25px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Paragliding Adventure</h1>
+        <p>Experience the Freedom of Flying</p>
+    </div>
+</section>
+
+<div class="container">
+
+    <!-- Activity Information -->
+    <div class="info-section">
+
+        <h2 class="mb-4">Activity Information</h2>
+
+        <p><strong>📍 Location:</strong> Khajjiar (Mini Switzerland of India) ,Jot Pass Area (Seasonal) Chamba, Himachal Pradesh</p>
+
+        <p><strong>🪂 Flight Type:</strong> Tandem Paragliding with Certified Pilots</p>
+
+        <p><strong>⏱️ Flight Duration:</strong> Depends on Weather Conditions and Selected Flight Package</p>
+
+        <p><strong>👤 Minimum Age:</strong> 12 Years</p>
+
+        <p><strong>🦺 Safety Equipment:</strong> Included</p>
+
+        <p><strong>📞 Contact Us:</strong> For More Information</p>
+
+        <p><strong>☎️ Call:</strong> +91 80917 57971</p>
+
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section">
+
+        <h2>About Paragliding Adventure</h2>
+
+        <p>
+        Experience the thrill of soaring high above the breathtaking landscapes of Chamba with our professional tandem paragliding adventure. Fly alongside certified pilots and enjoy stunning aerial views of mountains, valleys and lush green surroundings.
+        </p>
+
+        <p>
+        Whether you are a first-time flyer or an adventure enthusiast, paragliding offers an unforgettable experience filled with excitement, freedom and spectacular scenery. Safety is our top priority, and all flights are conducted using certified equipment and experienced pilots.
+        </p>
+
+        <p>
+        Weather conditions play an important role in flight duration and route selection, ensuring a safe and enjoyable experience for every participant.
+        </p>
+
+    </div>
+
+    <!-- Buttons -->
+    <div class="text-center my-5">
+
+        <a href="../index.html" class="btn btn-outline-dark btn-custom">
+            Back To Home
+        </a>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    © 2026 Rudr Adventure. All Rights Reserved.
+</div>
+
+</body>
+</html>
